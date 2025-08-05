@@ -9,7 +9,7 @@ def home_view(request):
 #Create View
 def product_create_view(request):
     form = ProductForm()
-    if request.methode == 'POST':
+    if request.method == 'POST':
         form = ProductForm(request.POST)
         if form.is_valid():
             form.save()
@@ -30,7 +30,7 @@ def product_update_view(request, product_id):
         if form.is_valid():
             form.save()
             return redirect('product_list')
-    return redirect(request, 'invApp/product_form.html', {'form':form})
+    return render(request, 'invApp/product_form.html', {'form':form})
 
 #Delete View
 def product_delete_view(request, product_id):
